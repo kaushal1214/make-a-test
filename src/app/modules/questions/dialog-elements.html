@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Exam Finished!</h1>
+<div mat-dialog-content>
+    <h3>Correct: {{data.correct}}, Wrong: {{data.wrong}}</h3>
+    <h3>Not Attempted: {{data.notAttempted}}</h3>
+    <h2>Score</h2>
+    <h3>Positive Marks: {{data.positiveScore}}, Negative Marks: {{data.negativeScore}}</h3>
+    <h3>Total: {{totalMarks}}</h3>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="review()">Review</button>
+</div>
+

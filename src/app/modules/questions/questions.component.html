@@ -1,0 +1,79 @@
+<style>
+  
+    .spacer {
+      flex: 1;
+    }
+  
+    .toolbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      background-color: #1976d2;
+      color: white;
+      font-weight: 600;
+      padding-right: 7px;
+    }
+  
+    .toolbar img {
+      margin: 0 16px;
+    }
+    span {
+        flex: 1;
+    }
+    
+  </style>
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img
+      width="40"
+      alt="Angular Logo"
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+    />
+    <span>Welcome to Multiple Choice Questionaire</span>
+    <button *ngIf="!reviewMode" mat-raised-button color="primary" (click)="finishNow()">Finish Now</button>
+    Time Left: {{hh}}:{{mm}}:{{ss}}
+  </div>
+
+<div class="row"> 
+        <div  class="qTiles">
+            Part 1
+            <br>
+            <button mat-mini-fab *ngFor="let quiz of aptQuestions" (click)="gotoQuiz(quiz)" [class]="questionClass[quiz-1]">{{quiz}}</button> 
+        </div>
+        <div class="questions">
+            <mat-card>
+                <label>
+                    {{question}}
+                </label> 
+                <br>
+                <img *ngIf="showImage" [src]="image" height="250px" width="250px">
+                <mat-radio-group class="example-radio-group" [(ngModel)]= "selectedAnswer" (change)="saveMyAnswer();">
+                    <mat-radio-button [class]="option[0]" value="option1"> 
+                        {{option1}}
+                    </mat-radio-button>
+                    
+                    <mat-radio-button [class]="option[1]" value="option2">
+                      {{option2}}
+                    </mat-radio-button>
+                    
+                    <mat-radio-button [class]="option[2]" value="option3">
+                      {{option3}}
+                    </mat-radio-button>
+                    
+                    <mat-radio-button [class]="option[3]" name="option4" value="option4">
+                      {{option4}}
+                    </mat-radio-button>
+                </mat-radio-group>        
+            </mat-card>
+        </div>
+</div>
+<div class="controls">
+    <button mat-raised-button (click)="previous()">Previous</button>&nbsp;
+    <button mat-raised-button (click)="next()">Next</button>&nbsp;
+    <button mat-raised-button color="accent" *ngIf="!reviewMode" (click)="markForReview()">{{markButton}}</button>
+    <button mat-raised-button color="primary" *ngIf="reviewMode" (click)="generateResult()">Show Result</button>
+</div>

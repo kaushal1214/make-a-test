@@ -1,0 +1,17 @@
+<div class="content" role="main">
+<img src="assets/images/owl.svg" width="15%" height="10%">    
+<mat-card class="mycard">
+    <mat-form-field class="example-form-field">
+        <mat-label>Your Name</mat-label>
+        <input autocomplete="off" matInput [(ngModel)]="name" type="text" >
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-form-field">
+        <mat-label>Admit Card number</mat-label>
+        <input autocomplete="off" [(ngModel)]="admitcard" matInput type="text">
+      </mat-form-field>
+      <br>
+    <button mat-raised-button color="primary" (click)="startExam()"> Start</button>
+</mat-card>
+
+</div>
